@@ -7,6 +7,16 @@ const restaurantSchema = new mongoose.Schema(
       required: true,
     },
 
+    ownerId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true
+    },
+
+    description: {
+      type: String
+    },
+
     cuisine: {
       type: String,
     },
@@ -27,6 +37,16 @@ const restaurantSchema = new mongoose.Schema(
         required: true,
       },
     },
+
+    address: {
+      type: String,
+      required: true
+    },
+
+    tablesAvailable: {
+      type: Number,
+      required: true
+    }
   },
   {
     timestamps: true,

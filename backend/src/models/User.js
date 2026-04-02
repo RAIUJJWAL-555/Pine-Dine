@@ -5,6 +5,7 @@ const userSchema = new mongoose.Schema(
     name: {
       type: String,
       required: true,
+      minlength: 3
     },
 
     email: {
@@ -17,7 +18,35 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+
+    phone: {
+      type: String,
+      required: true
+    },
+
+    role: {
+      type: String,
+      enum: ["consumer", "restaurant", "courier", "admin"],
+      default: "consumer"
+    },
+
+    address: {
+      type: String,
+      required: true
+    },
+
+    location: {
+      type: {
+        type: String,
+        enum: ["Point"],
+        required: true,
+      },
+      coordinates: {
+        type: [Number], // [longitude, latitude]
+        required: true,
+    }
   },
+},
   {
     timestamps: true,
   }
